@@ -1,0 +1,33 @@
+{
+  "name": "web-console",
+  "version": "1.0.0",
+  "description": "Platform for managing WhatsApp bots",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "client": "serve -s public -p 5000",
+    "deploy": "firebase deploy"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^8.2.3",
+    "socket.io": "^4.5.1",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "adm-zip": "^0.5.10",
+    "firebase-admin": "^11.10.1",
+    "qrcode": "^1.5.3",
+    "uuid": "^9.0.1",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "^12.4.0",
+    "nodemon": "^3.0.1",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
+

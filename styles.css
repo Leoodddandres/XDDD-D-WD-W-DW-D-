@@ -1,0 +1,577 @@
+/* General Styles */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Landing page styling */
+#landing-page {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Navigation */
+nav {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-hidden {
+    transform: translateY(-100%);
+    box-shadow: none;
+}
+
+.nav-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Menu Item Animation */
+.nav-item {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #10B981;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.nav-item.active {
+    color: #10B981;
+    position: relative;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #10B981;
+    transition: width 0.3s ease;
+}
+
+/* Login Button Animation */
+.login-btn {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.login-btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.login-btn:hover::before {
+    width: 100%;
+}
+
+/* Hero Section Animation */
+.hero-text {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero-button {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease 0.3s forwards;
+}
+
+.hero-image {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease 0.5s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-graphic {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Login page styling */
+#login-page {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23098765' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+#google-login {
+    transition: all 0.3s ease;
+}
+
+#google-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Console styling */
+#console-output {
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 1rem;
+    font-size: 0.875rem;
+    background-color: #1a1b26;
+    color: #a9b1d6;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+#console-output:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+#console-output::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+#console-output::-webkit-scrollbar-track {
+    background: #1a1b26;
+    border-radius: 3px;
+}
+
+#console-output::-webkit-scrollbar-thumb {
+    background-color: #414868;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+#console-output::-webkit-scrollbar-thumb:hover {
+    background-color: #565f89;
+}
+
+/* Console message types */
+.console-info {
+    color: #7aa2f7;
+}
+
+.console-success {
+    color: #9ece6a;
+}
+
+.console-error {
+    color: #f7768e;
+}
+
+.console-warning {
+    color: #e0af68;
+}
+
+.console-timestamp {
+    color: #565f89;
+    font-size: 0.75rem;
+}
+
+/* QR Code container */
+#qr-container {
+    background: linear-gradient(to bottom right, #ffffff, #f3f4f6);
+    border: 2px dashed #e5e7eb;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+#qr-container:hover {
+    border-color: #10B981;
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.1);
+}
+
+#qr-container img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Console wrapper */
+.console-wrapper {
+    background: linear-gradient(135deg, #1a1b26 0%, #24283b 100%);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.console-header {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.console-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.console-dot-red {
+    background-color: #f7768e;
+}
+
+.console-dot-yellow {
+    background-color: #e0af68;
+}
+
+.console-dot-green {
+    background-color: #9ece6a;
+}
+
+/* Bot status indicators */
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.status-active {
+    background-color: #10B981;
+    box-shadow: 0 0 5px #10B981;
+}
+
+.status-inactive {
+    background-color: #6B7280;
+}
+
+.status-error {
+    background-color: #EF4444;
+    box-shadow: 0 0 5px #EF4444;
+}
+
+/* File input styling */
+input[type="file"] {
+    color: #6B7280;
+}
+
+/* Dashboard styling */
+.shadow-soft {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), 
+                0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-soft-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Input fields */
+.input-field {
+    margin-top: 1rem;
+    display: block;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: #f7f7f7;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.input-field:hover {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+}
+
+.input-field:focus {
+    outline: none;
+    border: 1px solid #34c759;
+    box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.2);
+}
+
+/* Upload zone */
+.upload-zone {
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.upload-zone:hover {
+    transform: translateY(-2px);
+}
+
+.upload-zone.drag-over {
+    border-color: #10B981;
+    background-color: rgba(16, 185, 129, 0.05);
+}
+
+/* Console styling */
+.qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16rem;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 2px dashed #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.qr-container:hover {
+    border-color: #10B981;
+    transform: translateY(-2px);
+}
+
+.console-wrapper {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #1a1b26;
+}
+
+.console-output {
+    padding: 1.5rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-break: break-word;
+    height: 300px;
+    background: linear-gradient(180deg, #1a1b26 0%, #24283b 100%);
+    color: #a9b1d6;
+    overflow-y: auto;
+}
+
+/* Console buttons */
+.console-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.console-button-start {
+    color: #ffffff;
+    background: linear-gradient(90deg, #34c759 0%, #2ecc71 100%);
+    box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2);
+}
+
+.console-button-start:hover {
+    background: linear-gradient(90deg, #2ecc71 0%, #34c759 100%);
+}
+
+.console-button-start:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
+}
+
+.console-button-stop {
+    color: #ffffff;
+    background: linear-gradient(90deg, #ef4444 0%, #e11d48 100%);
+    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+}
+
+.console-button-stop:hover {
+    background: linear-gradient(90deg, #e11d48 0%, #ef4444 100%);
+}
+
+.console-button-stop:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: linear-gradient(90deg, #94a3b8 0%, #64748b 100%);
+}
+
+/* Table styling */
+.table-header {
+    padding-left: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Status indicators with glow effect */
+.status-indicator {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    position: relative;
+}
+
+.status-indicator::after {
+    content: '';
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    right: -0.5rem;
+    bottom: -0.5rem;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    opacity: 0.6;
+}
+
+.status-active {
+    background-color: #10B981;
+}
+
+.status-active::after {
+    background-color: #10B981;
+}
+
+.status-inactive {
+    background-color: #6B7280;
+}
+
+.status-error {
+    background-color: #EF4444;
+}
+
+.status-error::after {
+    background-color: #EF4444;
+}
+
+/* Text gradient effect */
+.text-gradient {
+    background: linear-gradient(90deg, #34c759 0%, #2ecc71 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Console dots */
+.console-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.console-dot:hover {
+    transform: scale(1.2);
+}
+
+.console-dot-red {
+    background-color: #f7768e;
+    box-shadow: 0 0 10px rgba(247, 118, 142, 0.3);
+}
+
+.console-dot-yellow {
+    background-color: #e0af68;
+    box-shadow: 0 0 10px rgba(224, 175, 104, 0.3);
+}
+
+.console-dot-green {
+    background-color: #9ece6a;
+    box-shadow: 0 0 10px rgba(158, 206, 106, 0.3);
+}
+
+/* Timestamps and message types */
+.console-timestamp {
+    color: #565f89;
+}
+
+.console-info {
+    color: #7aa2f7;
+}
+
+.console-success {
+    color: #9ece6a;
+}
+
+.console-error {
+    color: #f7768e;
+}
+
+.console-warning {
+    color: #e0af68;
+}
+
+/* Spinner animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinner {
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* Loading pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.4);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+.section-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.section-content:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+}

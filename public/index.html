@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consola Web</title>
+    <style>
+        #console {
+            background-color: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 10px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        #input {
+            width: 100%;
+            background-color: #000;
+            color: #0f0;
+            border: none;
+            font-family: monospace;
+            padding: 5px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="console"></div>
+    <input type="text" id="input" placeholder="Ingrese un comando..." autofocus>
+
+    <script>
+        const consoleDiv = document.getElementById('console');
+        const input = document.getElementById('input');
+        
+        // Determinar la URL del WebSocket basada en el ambiente
+        const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsHost = window.location.hostname === 'localhost' 
+            ? 'localhost:8080'
+            : window.location.hostname;
+        const ws = new WebSocket(`${wsProtocol}//${wsHost}`);
+        
+        // Añadir token de autenticación
+        const token = localStorage.getItem('console_token') || prompt('Ingrese el token de autenticación:');
+        localStorage.setItem('console_token', token);
+
+        function appendToConsole(text, isError = false) {
+            const line = document.createElement('div');
+            line.style.color = isError ? '#f00' : '#0f0';
+            line.textContent = text;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+        ws.onopen = () => {
+            appendToConsole('Conexión establecida');
+        };
+
+        ws.onmessage = (event) => {
+            const response = JSON.parse(event.data);
+            if (response.error) {
+                appendToConsole(response.error, true);
+            } else if (response.output) {
+                appendToConsole(response.output);
+            }
+        };
+
+        ws.onerror = (error) => {
+            appendToConsole('Error de conexión: ' + error.message, true);
+        };
+
+        ws.onclose = () => {
+            appendToConsole('Conexión cerrada', true);
+        };
+
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const command = input.value;
+                appendToConsole('> ' + command);
+                ws.send(command);
+                input.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
